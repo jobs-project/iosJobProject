@@ -13,6 +13,8 @@ import SwiftyJSON
 class ListViewController: UITableViewController {
     
     let infoURL = "http://82.146.40.234/job/"
+    
+    let linkForCell = "https://www.work.ua/jobs/2297209/?utm_source=resume_send_confirm&utm_medium=email&utm_content=jobs&utm_campaign=27.07.2018"
 
     func getData(url: String) {
         Alamofire.request(url, method: .get).responseJSON { response in
@@ -92,7 +94,17 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "goToVacancy", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToVacancy" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let dvc = segue.destination as! WebViewController
+                dvc.url = URL(string: linkForCell)
+            }
+        }
     }
     
 
