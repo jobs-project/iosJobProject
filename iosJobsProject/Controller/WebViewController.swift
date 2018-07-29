@@ -29,11 +29,12 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         progressView = UIProgressView(progressViewStyle: .default)
         progressView.sizeToFit()
         
-       // let backForWardButton = UIBarButtonItem(barButtonSystemItem: ., target: <#T##Any?#>, action: <#T##Selector?#>)
+        
         let progressButton = UIBarButtonItem(customView: progressView)
-        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [progressButton, flexibleSpacer, refreshButton]
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil) //поменять на flexiblespace
+        //let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+        toolbarItems = [flexibleSpacer, progressButton, /*refreshButton*/]
+        
         navigationController?.isToolbarHidden = false
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -49,10 +50,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         title = webView.title
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     
 }

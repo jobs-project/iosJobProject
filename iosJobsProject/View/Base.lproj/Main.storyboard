@@ -34,28 +34,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vacancyCell" rowHeight="100" id="PgB-qf-KOu" customClass="CellForList" customModule="iosJobsProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vacancyCell" rowHeight="113" id="PgB-qf-KOu" customClass="CellForList" customModule="iosJobsProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PgB-qf-KOu" id="fv6-DG-PsT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Title Title Title Title " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-j5-x4Z">
-                                            <rect key="frame" x="16" y="0.0" width="190" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ываываыавввыаываываываываываываываываолфрыдвлаорфылварфдлывоардфлыва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-j5-x4Z">
+                                            <rect key="frame" x="16" y="5" width="343" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTs-mU-ZNJ">
-                                            <rect key="frame" x="16" y="24" width="128" height="18"/>
+                                            <rect key="frame" x="16" y="26" width="117" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3H-4k-UWJ">
-                                            <rect key="frame" x="16" y="78" width="160" height="21"/>
+                                            <rect key="frame" x="16" y="83" width="96" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                             <nil key="textColor"/>
@@ -69,7 +70,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjA-Fb-m1K">
-                                            <rect key="frame" x="201" y="78" width="158" height="21"/>
+                                            <rect key="frame" x="129" y="78" width="106" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                             <nil key="textColor"/>
@@ -82,15 +83,17 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsL-fV-GDX">
+                                            <rect key="frame" x="255" y="78" width="104" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="RH4-j5-x4Z" firstAttribute="leading" relation="lessThanOrEqual" secondItem="fv6-DG-PsT" secondAttribute="leading" constant="16" id="ObE-P2-j98"/>
-                                        <constraint firstAttribute="trailing" secondItem="RH4-j5-x4Z" secondAttribute="trailing" constant="169" id="QTQ-Vy-HyE"/>
-                                        <constraint firstItem="RH4-j5-x4Z" firstAttribute="top" secondItem="fv6-DG-PsT" secondAttribute="top" id="tEK-wX-7wA"/>
-                                        <constraint firstAttribute="bottom" secondItem="RH4-j5-x4Z" secondAttribute="bottom" constant="77.5" id="yaV-57-Kp6"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="currencyLabel" destination="BsL-fV-GDX" id="u3x-Kb-sWZ"/>
                                     <outlet property="dateLabel" destination="ech-ed-kgj" id="vXr-mU-HgC"/>
                                     <outlet property="descriptionLabel" destination="b4C-kg-X9L" id="bWs-Vw-deL"/>
                                     <outlet property="locationLabel" destination="OTs-mU-ZNJ" id="Icg-bs-FKP"/>
@@ -106,7 +109,12 @@
                             <outlet property="delegate" destination="j4R-Wf-oIM" id="T5W-Rf-E9U"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Previous page" id="rfR-Yz-8Wx"/>
+                        <barButtonItem title="Next page" id="y94-bC-j3q"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Vacancies" id="DTX-AJ-O1Y"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToVacancy" id="Nol-LY-mOr"/>
                     </connections>
@@ -118,13 +126,17 @@
         <!--Navigation Controller-->
         <scene sceneID="8QH-n5-q1k">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iPu-7Y-xpI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="iPu-7Y-xpI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IPN-Ot-Zf2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X6M-CD-bKn">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="j4R-Wf-oIM" kind="relationship" relationship="rootViewController" id="i2u-he-t1Q"/>
                     </connections>

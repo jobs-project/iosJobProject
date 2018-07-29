@@ -16,13 +16,19 @@ class CellForList: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var salaryLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
+    
+    
     
     func setVacancy(vacancy: Vacancies) {
         titleLabel.text = vacancy.title
         locationLabel.text = vacancy.location
         dateLabel.text = vacancy.date
         descriptionLabel.text = vacancy.description
-        typeLabel.text = vacancy.type
+        typeLabel.text = vacancy.company
         salaryLabel.text = String(vacancy.salary)
+        currencyLabel.text = vacancy.currency
     }
 }
+
+

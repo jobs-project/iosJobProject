@@ -14,15 +14,19 @@ class Vacancies {
     var location: String
     var date: String
     var description: String
-    var type: String
+    var company: String
     var salary: Int
+    var cellurl: String
+    var currency: String
     
-    init (title: String, location: String, date: String, description: String, type: String, salary: Int) {
+    init (title: String, location: String, date: String, description: String, company: String, salary: Int, cellurl: String, currency: String) {
         self.title = title
         self.location = location
         self.date = date
         self.description = description
-        self.type = type
+        self.company = company
         self.salary = salary
+        self.cellurl = cellurl
+        self.currency = currency
     }
 }

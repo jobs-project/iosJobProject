@@ -10,65 +10,76 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ListViewController: UITableViewController {
-    
-    let infoURL = "http://82.146.40.234/job/"
-    
-    let linkForCell = "https://www.work.ua/jobs/2297209/?utm_source=resume_send_confirm&utm_medium=email&utm_content=jobs&utm_campaign=27.07.2018"
-
-    func getData(url: String) {
-        Alamofire.request(url, method: .get).responseJSON { response in
-            
-            if response.result.isSuccess {
-                print("Success, got the data!")
-                let vacanciesJSON: JSON = JSON(response.result.value!)
-                print(vacanciesJSON)
-            } else {
-                print("Error \(response.result.error)")
-                
-            }
-            
-        }
+class ListViewController: UITableViewController, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    var vacancies: [Vacancies] = []
-    //var someArray = ["love", "hate"]
-    //var images = ["balkan.jpg", "bochka.jpg"]
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredVacancies = vacanciesArray.filter({( vacancy : Vacancies) -> Bool in
+            return vacanciesArray[0].title.lowercased().contains(searchText.lowercased())})
+        
+        tableView.reloadData()
+    }
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var vacanciesArray: [Vacancies] = []
+    
+    var filteredVacancies: [Vacancies] = []
+    
+   
+    let searchRequest: String = "http://159.65.200.195/job/search?title=nurse&salary=10000&location=London&description=blablabla"
+    
+    let infoURL = "http://159.65.200.195/job?page=1"
+    
     override func viewDidLoad() {
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        
+        
+        getData(url: infoURL)
         super.viewDidLoad()
-        vacancies = createArray()
+        
         tableView.delegate = self
         tableView.dataSource = self
         setupNavBar()
         navigationItem.largeTitleDisplayMode = .automatic
         let searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search vacancies"
         navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        
+        
+        
+        
+    
         
         navigationItem.hidesSearchBarWhenScrolling = false
-        getData(url: infoURL)
+        //let params: [String: String] = ["search": self.searchRequest]
+        
     }
     
-    func createArray() -> [Vacancies] {
-        var tempVacancies: [Vacancies] = []
-        
-        let vacancy1 = Vacancies(title: "ios engineer", location: "Kyiv", date: "10.10.10", description: "asdfasdfasdfasdfasdf", type: "fulltime", salary: 15000)
-        let vacancy2 = Vacancies(title: "java developer", location: "Dnepro", date: "12.12.12", description: "asdfasdfasdfasdf", type: "fulltime" , salary: 22000)
-        tempVacancies.append(vacancy1)
-        tempVacancies.append(vacancy2)
-        return tempVacancies
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
     func setupNavBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
     // MARK: - Table view data source
 
@@ -77,17 +88,22 @@ class ListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vacancies.count
+        if isFiltering() {
+            
+            return filteredVacancies.count
+        }
+        
+        
+        return vacanciesArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let vacancy = vacancies[indexPath.row]
+        let vacancy = vacanciesArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "vacancyCell") as! CellForList
         cell.setVacancy(vacancy: vacancy)
-        //cell.textLabel?.text = someArray[indexPath.row]
-        //cell.imageView?.image = UIImage(named: images[indexPath.row])
+        print(vacancy.title)
         
 
         return cell
@@ -102,55 +118,70 @@ class ListViewController: UITableViewController {
         if segue.identifier == "goToVacancy" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let dvc = segue.destination as! WebViewController
-                dvc.url = URL(string: linkForCell)
+                let vacancy = vacanciesArray[indexPath.row]
+                
+                dvc.url = URL(string: vacancy.cellurl)
             }
         }
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    
+    //MARK: - Networking
+    func getData(url: String) {
+        Alamofire.request(url, method: .get).responseJSON { response in
+            
+            if response.result.isSuccess {
+                print("Success, got the data!")
+                let vacanciesJSON: JSON = JSON(response.result.value!)
+                print(vacanciesJSON)
+                //var numberOfVacancies = vacanciesJSON.count
+                
+                for i in 0..<(vacanciesJSON.count) {
+                    
+                    self.vacanciesArray.append(self.updateData(json: vacanciesJSON, numberInJSONArray: i))
+                    
+                }
+                print(self.vacanciesArray[4].company)
+                print(self.vacanciesArray[1].company)
+                print(self.vacanciesArray[2].company)
+                print(self.vacanciesArray[3].company)
+                print(self.vacanciesArray.count)
+                self.tableView.reloadData()
+                //let data = self.updateData(json: vacanciesJSON)
+            } else {
+                print("Error \(response.result.error)")
+            }
+        }
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    //MARK: - JSON Parsing
+    
+    func updateData(json: JSON, numberInJSONArray: Int) -> Vacancies {
+        
+        let titleResult = json[numberInJSONArray]["title"].string
+        let locationResult = json[numberInJSONArray]["location"].string
+        let dateResult = json[numberInJSONArray]["date"].string
+        let descriptionResult = json[numberInJSONArray]["description"].string
+        let companyResult = json[numberInJSONArray]["company"].string
+        let salaryResult = json[numberInJSONArray]["salary"].int
+        let cellUrlResult = json[numberInJSONArray]["url"].string
+        let currencyResult = json[numberInJSONArray]["currency"].string
+        let testvacancy = Vacancies(title: titleResult!, location: locationResult!, date: dateResult!, description: descriptionResult!, company: companyResult!, salary: salaryResult!, cellurl: cellUrlResult!, currency: currencyResult!)
+        
+        return testvacancy
     }
-    */
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
