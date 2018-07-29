@@ -41,56 +41,92 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ываываыавввыаываываываываываываываываолфрыдвлаорфылварфдлывоардфлыва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-j5-x4Z">
-                                            <rect key="frame" x="16" y="5" width="343" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ываываыавввыаываываываываываываываываолфрыдвлаорфылварфдлывоардфлыва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-j5-x4Z">
+                                            <rect key="frame" x="16" y="5" width="666" height="21"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTs-mU-ZNJ">
-                                            <rect key="frame" x="16" y="26" width="117" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTs-mU-ZNJ">
+                                            <rect key="frame" x="16" y="28" width="169" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="lEi-Z2-GYv"/>
+                                                <constraint firstAttribute="width" constant="104" id="rMY-kc-Rpm"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3H-4k-UWJ">
-                                            <rect key="frame" x="16" y="83" width="96" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3H-4k-UWJ">
+                                            <rect key="frame" x="16" y="83" width="27" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="ly2-sb-Kg4"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ech-ed-kgj">
-                                            <rect key="frame" x="174" y="28" width="105" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjA-Fb-m1K">
-                                            <rect key="frame" x="129" y="78" width="106" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjA-Fb-m1K">
+                                            <rect key="frame" x="76" y="83" width="33" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="J9N-qA-PUK"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4C-kg-X9L">
-                                            <rect key="frame" x="16" y="50" width="351" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4C-kg-X9L">
+                                            <rect key="frame" x="16" y="50" width="666" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="yO0-ZX-MKg"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsL-fV-GDX">
-                                            <rect key="frame" x="255" y="78" width="104" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsL-fV-GDX">
+                                            <rect key="frame" x="166.5" y="83" width="104" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="104" id="zJ8-Mf-p3d"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ech-ed-kgj">
+                                            <rect key="frame" x="225" y="28" width="96" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="35.5" id="SRK-vT-KJs"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="ie2-sc-VqE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BsL-fV-GDX" firstAttribute="top" secondItem="b4C-kg-X9L" secondAttribute="bottom" constant="3" id="3Tk-c9-rHX"/>
+                                        <constraint firstItem="ech-ed-kgj" firstAttribute="leading" secondItem="OTs-mU-ZNJ" secondAttribute="trailing" constant="47" id="3pj-v8-SSY"/>
+                                        <constraint firstAttribute="bottom" secondItem="XjA-Fb-m1K" secondAttribute="bottom" constant="8.5" id="63R-hE-DOa"/>
+                                        <constraint firstItem="XjA-Fb-m1K" firstAttribute="leading" secondItem="T3H-4k-UWJ" secondAttribute="trailing" constant="33" id="6Di-1K-TL1"/>
+                                        <constraint firstItem="ech-ed-kgj" firstAttribute="top" secondItem="RH4-j5-x4Z" secondAttribute="bottom" constant="2" id="7ki-OV-508"/>
+                                        <constraint firstAttribute="bottom" secondItem="BsL-fV-GDX" secondAttribute="bottom" constant="8.5" id="7pR-mC-Ci0"/>
+                                        <constraint firstItem="RH4-j5-x4Z" firstAttribute="top" secondItem="fv6-DG-PsT" secondAttribute="top" constant="5" id="7wO-v0-jZb"/>
+                                        <constraint firstAttribute="trailing" secondItem="ech-ed-kgj" secondAttribute="trailing" constant="211.5" id="K9T-KR-vKD"/>
+                                        <constraint firstAttribute="trailing" secondItem="RH4-j5-x4Z" secondAttribute="trailing" constant="16" id="NSy-UB-YEA"/>
+                                        <constraint firstItem="XjA-Fb-m1K" firstAttribute="top" secondItem="b4C-kg-X9L" secondAttribute="bottom" constant="3" id="SoR-7p-3Xd"/>
+                                        <constraint firstItem="RH4-j5-x4Z" firstAttribute="leading" secondItem="fv6-DG-PsT" secondAttribute="leading" constant="16" id="V5h-Wi-kOK"/>
+                                        <constraint firstItem="OTs-mU-ZNJ" firstAttribute="top" secondItem="RH4-j5-x4Z" secondAttribute="bottom" constant="2" id="VXv-LD-ZYz"/>
+                                        <constraint firstItem="BsL-fV-GDX" firstAttribute="leading" secondItem="XjA-Fb-m1K" secondAttribute="trailing" constant="57" id="YEM-h4-gcR"/>
+                                        <constraint firstItem="OTs-mU-ZNJ" firstAttribute="leading" secondItem="fv6-DG-PsT" secondAttribute="leading" constant="16" id="Yha-lX-YFD"/>
+                                        <constraint firstItem="T3H-4k-UWJ" firstAttribute="leading" secondItem="fv6-DG-PsT" secondAttribute="leading" constant="16" id="c3G-Lk-j9W"/>
+                                        <constraint firstAttribute="trailing" secondItem="b4C-kg-X9L" secondAttribute="trailing" constant="16" id="fZQ-Oh-4Vx"/>
+                                        <constraint firstItem="T3H-4k-UWJ" firstAttribute="top" secondItem="b4C-kg-X9L" secondAttribute="bottom" constant="3" id="gW9-X8-EhJ"/>
+                                        <constraint firstItem="b4C-kg-X9L" firstAttribute="top" secondItem="OTs-mU-ZNJ" secondAttribute="bottom" id="vBV-Pb-40D"/>
+                                        <constraint firstAttribute="bottom" secondItem="T3H-4k-UWJ" secondAttribute="bottom" constant="13.5" id="x79-lo-lha"/>
+                                        <constraint firstItem="ech-ed-kgj" firstAttribute="leading" secondItem="OTs-mU-ZNJ" secondAttribute="trailing" constant="47" id="yDE-07-1dC"/>
+                                        <constraint firstItem="b4C-kg-X9L" firstAttribute="leading" secondItem="fv6-DG-PsT" secondAttribute="leading" constant="16" id="yxB-dD-wIi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="currencyLabel" destination="BsL-fV-GDX" id="u3x-Kb-sWZ"/>

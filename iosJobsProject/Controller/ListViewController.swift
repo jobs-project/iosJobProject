@@ -10,18 +10,41 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ListViewController: UITableViewController, UISearchResultsUpdating {
+class ListViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var vacanciesArray: [Vacancies] = []
     var filteredVacancies: [Vacancies] = []
     
+    
+    
+    
+    
+    
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
+        
+        //let searchBar = searchController.searchBar
+       // let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        //filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        //filteredVacancies = vacanciesArray.filter({( testvacancy : Vacancies) -> Bool in
-           // return testvacancy.title.lowercased().contains(searchText.lowercased())})
+        //vacanciesArray
+        vacanciesArray = vacanciesArray.filter({( candy : Vacancies) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (candy.title == scope)
+            
+            if searchBarIsEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && candy.title.lowercased().contains(searchText.lowercased())
+            }
+        })
+        
+        
+        
+        
+        
+        
         vacanciesArray.removeAll()
         let searchRequest: String = "http://159.65.200.195/job/search?title=\(searchText)"
         getData(url: searchRequest)
@@ -29,7 +52,14 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
         tableView.reloadData()
     }
     func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
+        
+        
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+        
+        
+        
+        //return searchController.isActive && !searchBarIsEmpty()
     }
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -39,6 +69,12 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+    
+    
+
     
     
    
@@ -60,21 +96,19 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
         setupNavBar()
         navigationItem.largeTitleDisplayMode = .automatic
         let searchController = UISearchController(searchResultsController: nil)
-        
+        searchController.searchBar.scopeButtonTitles = ["All", "With salary"]
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search vacancies"
+        
+        
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
         
-        
-        
-        
-    
-        
         navigationItem.hidesSearchBarWhenScrolling = false
-        //let params: [String: String] = ["search": self.searchRequest]
+        
         
     }
     
@@ -171,10 +205,10 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
         let dateResult = json[numberInJSONArray]["date"].string
         let descriptionResult = json[numberInJSONArray]["description"].string
         let companyResult = json[numberInJSONArray]["company"].string
-        let salaryResult = json[numberInJSONArray]["salary"].int
+        let salaryResult = json[numberInJSONArray]["salary"].int ?? 0
         let cellUrlResult = json[numberInJSONArray]["url"].string
-        let currencyResult = json[numberInJSONArray]["currency"].string
-        let testvacancy = Vacancies(title: titleResult!, location: locationResult!, date: dateResult!, description: descriptionResult!, company: companyResult!, salary: salaryResult!, cellurl: cellUrlResult!, currency: currencyResult!)
+        let currencyResult = json[numberInJSONArray]["currency"].string ?? "dollar"
+        let testvacancy = Vacancies(title: titleResult!, location: locationResult!, date: dateResult!, description: descriptionResult!, company: companyResult!, salary: salaryResult, cellurl: cellUrlResult!, currency: currencyResult)
         
         return testvacancy
     }
