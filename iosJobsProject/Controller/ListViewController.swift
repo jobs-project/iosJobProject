@@ -11,13 +11,20 @@ import Alamofire
 import SwiftyJSON
 
 class ListViewController: UITableViewController, UISearchResultsUpdating {
+    
+    var vacanciesArray: [Vacancies] = []
+    var filteredVacancies: [Vacancies] = []
+    
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredVacancies = vacanciesArray.filter({( vacancy : Vacancies) -> Bool in
-            return vacanciesArray[0].title.lowercased().contains(searchText.lowercased())})
+        //filteredVacancies = vacanciesArray.filter({( testvacancy : Vacancies) -> Bool in
+           // return testvacancy.title.lowercased().contains(searchText.lowercased())})
+        vacanciesArray.removeAll()
+        let searchRequest: String = "http://159.65.200.195/job/search?title=\(searchText)"
+        getData(url: searchRequest)
         
         tableView.reloadData()
     }
@@ -32,23 +39,22 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    var vacanciesArray: [Vacancies] = []
     
-    var filteredVacancies: [Vacancies] = []
     
    
     let searchRequest: String = "http://159.65.200.195/job/search?title=nurse&salary=10000&location=London&description=blablabla"
     
     let infoURL = "http://159.65.200.195/job?page=1"
+    let infoURL2 = "http://159.65.200.195/job?page=2"
     
     override func viewDidLoad() {
         
         self.navigationController?.setToolbarHidden(false, animated: true)
         
         
-        getData(url: infoURL)
-        super.viewDidLoad()
         
+        super.viewDidLoad()
+        getData(url: infoURL)
         tableView.delegate = self
         tableView.dataSource = self
         setupNavBar()
@@ -89,22 +95,26 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
-            
             return filteredVacancies.count
         }
-        
-        
         return vacanciesArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let vacancy = vacanciesArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "vacancyCell") as! CellForList
-        cell.setVacancy(vacancy: vacancy)
-        print(vacancy.title)
+        let vacancy = vacanciesArray[indexPath.row]
+        let filteredVacancy: Vacancies
         
+        if isFiltering() {
+            filteredVacancy = filteredVacancies[indexPath.row]
+        } else {
+            filteredVacancy = vacanciesArray[indexPath.row]
+            
+        }
+        
+        print(vacancy.title)
+        cell.setVacancy(vacancy: filteredVacancy)
 
         return cell
     }
@@ -142,11 +152,7 @@ class ListViewController: UITableViewController, UISearchResultsUpdating {
                     self.vacanciesArray.append(self.updateData(json: vacanciesJSON, numberInJSONArray: i))
                     
                 }
-                print(self.vacanciesArray[4].company)
-                print(self.vacanciesArray[1].company)
-                print(self.vacanciesArray[2].company)
-                print(self.vacanciesArray[3].company)
-                print(self.vacanciesArray.count)
+                
                 self.tableView.reloadData()
                 //let data = self.updateData(json: vacanciesJSON)
             } else {
